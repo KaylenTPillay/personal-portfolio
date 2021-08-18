@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/app_root_navigation_about_me"
+        android:title="@string/app_root_bottom_navigation_about_me"
+        android:icon="@drawable/ic_material_account" />
+
+    <item
+        android:id="@+id/app_root_navigation_project"
+        android:title="@string/app_root_bottom_navigation_project"
+        android:icon="@drawable/ic_material_badge" />
+
+    <item
+        android:id="@+id/app_root_navigation_document"
+        android:title="@string/app_root_bottom_navigation_document"
+        android:icon="@drawable/ic_material_folder" />
+
+</menu>

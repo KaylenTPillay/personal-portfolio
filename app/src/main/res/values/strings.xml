@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Personal Portfolio</string>
+    <string name="app_root_bottom_navigation_about_me">About Me</string>
+    <string name="app_root_bottom_navigation_project">Projects</string>
+    <string name="app_root_bottom_navigation_document">Documents</string>
 </resources>
