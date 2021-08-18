@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_root_navigation_graph"
+    app:startDestination="@id/app_root_navigation_about_me">
+
+    <fragment
+        android:id="@+id/app_root_navigation_about_me"
+        android:name="co.za.kaylentravispillay.personalportfolio.aboutme.FragmentAboutMe"
+        android:label="FragmentAboutMe" >
+        <action
+            android:id="@+id/action_app_root_navigation_about_me_to_app_root_navigation_project"
+            app:destination="@id/app_root_navigation_project" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/app_root_navigation_project"
+        android:name="co.za.kaylentravispillay.personalportfolio.project.FragmentProject"
+        android:label="FragmentProject" >
+        <action
+            android:id="@+id/action_app_root_navigation_project_to_app_root_navigation_document"
+            app:destination="@id/app_root_navigation_document" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/app_root_navigation_document"
+        android:name="co.za.kaylentravispillay.personalportfolio.document.FragmentDocument"
+        android:label="FragmentDocument" />
+</navigation>

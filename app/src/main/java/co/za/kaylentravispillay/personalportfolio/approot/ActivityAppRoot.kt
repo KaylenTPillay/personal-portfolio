@@ -3,9 +3,14 @@ package co.za.kaylentravispillay.personalportfolio.approot
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.ui.NavigationUI
+import co.za.kaylentravispillay.personalportfolio.R
 import co.za.kaylentravispillay.personalportfolio.approot.viewmodel.ViewModelAppRoot
 import co.za.kaylentravispillay.personalportfolio.approot.viewmodel.factory.ViewModelFactoryAppRoot
 import co.za.kaylentravispillay.personalportfolio.databinding.AppRootLayoutBinding
+import co.za.kaylentravispillay.personalportfolio.util.getNavigationController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 internal class ActivityAppRoot : AppCompatActivity() {
     private lateinit var binding: AppRootLayoutBinding
@@ -14,9 +19,25 @@ internal class ActivityAppRoot : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = AppRootLayoutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setupBinding()
+        setupBottomNavigation(
+            binding.appRootBottomNavigation,
+            supportFragmentManager.getNavigationController(R.id.app_root_container)
+        )
 
         viewModel.init()
+    }
+
+    private fun setupBinding() {
+        binding = AppRootLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    private fun setupBottomNavigation(
+        view: BottomNavigationView,
+        navigationController: NavController?
+    ) {
+        navigationController ?: return
+        NavigationUI.setupWithNavController(view, navigationController)
     }
 }
