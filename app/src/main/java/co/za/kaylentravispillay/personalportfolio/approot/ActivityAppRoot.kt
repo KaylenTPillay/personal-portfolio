@@ -1,20 +1,16 @@
 package co.za.kaylentravispillay.personalportfolio.approot
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import co.za.kaylentravispillay.personalportfolio.R
-import co.za.kaylentravispillay.personalportfolio.approot.viewmodel.ViewModelAppRoot
-import co.za.kaylentravispillay.personalportfolio.approot.viewmodel.factory.ViewModelFactoryAppRoot
 import co.za.kaylentravispillay.personalportfolio.databinding.AppRootLayoutBinding
 import co.za.kaylentravispillay.personalportfolio.util.getNavigationController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 internal class ActivityAppRoot : AppCompatActivity() {
     private lateinit var binding: AppRootLayoutBinding
-    private val viewModel: ViewModelAppRoot by viewModels { ViewModelFactoryAppRoot() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +20,6 @@ internal class ActivityAppRoot : AppCompatActivity() {
             binding.appRootBottomNavigation,
             supportFragmentManager.getNavigationController(R.id.app_root_container)
         )
-
-        viewModel.init()
     }
 
     private fun setupBinding() {
