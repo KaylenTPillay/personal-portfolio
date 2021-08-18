@@ -7,9 +7,10 @@ import androidx.navigation.ui.NavigationUI
 import co.za.kaylentravispillay.personalportfolio.R
 import co.za.kaylentravispillay.personalportfolio.approot.listener.OnAppRootToolbarListener
 import co.za.kaylentravispillay.personalportfolio.databinding.AppRootLayoutBinding
-import co.za.kaylentravispillay.personalportfolio.util.getNavigationController
+import co.za.kaylentravispillay.personalportfolio.util.extension.getNavigationController
 import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
-import co.za.kaylentravispillay.personalportfolio.util.renderWithModel
+import co.za.kaylentravispillay.personalportfolio.util.extension.renderWithModel
+import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.ResourceDimension
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
@@ -19,6 +20,7 @@ internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
         super.onCreate(savedInstanceState)
 
         setupBinding()
+        setupToolbar()
         setupBottomNavigation(
             binding.appRootBottomNavigation,
             supportFragmentManager.getNavigationController(R.id.app_root_container)
@@ -27,6 +29,11 @@ internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
 
     override fun renderToolbarWithModel(model: UIModelToolbar) {
         binding.appRootToolbar.renderWithModel(model)
+    }
+
+    private fun setupToolbar() {
+        binding.appRootToolbar.isTitleCentered = true
+        binding.appRootToolbar.elevation = ResourceDimension.getDimensions().dimen1.toFloat()
     }
 
     private fun setupBinding() {

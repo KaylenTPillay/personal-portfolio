@@ -1,4 +1,4 @@
-package co.za.kaylentravispillay.personalportfolio.util
+package co.za.kaylentravispillay.personalportfolio.util.extension
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
