@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import co.za.kaylentravispillay.personalportfolio.R
+import co.za.kaylentravispillay.personalportfolio.approot.listener.OnAppRootToolbarListener
 import co.za.kaylentravispillay.personalportfolio.databinding.AppRootLayoutBinding
 import co.za.kaylentravispillay.personalportfolio.util.getNavigationController
+import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
+import co.za.kaylentravispillay.personalportfolio.util.renderWithModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-internal class ActivityAppRoot : AppCompatActivity() {
+internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
     private lateinit var binding: AppRootLayoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +23,10 @@ internal class ActivityAppRoot : AppCompatActivity() {
             binding.appRootBottomNavigation,
             supportFragmentManager.getNavigationController(R.id.app_root_container)
         )
+    }
+
+    override fun renderToolbarWithModel(model: UIModelToolbar) {
+        binding.appRootToolbar.renderWithModel(model)
     }
 
     private fun setupBinding() {
