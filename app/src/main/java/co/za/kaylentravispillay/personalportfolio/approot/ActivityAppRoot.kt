@@ -20,7 +20,6 @@ internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
         super.onCreate(savedInstanceState)
 
         setupBinding()
-        setupToolbar()
         setupBottomNavigation(
             binding.appRootBottomNavigation,
             supportFragmentManager.getNavigationController(R.id.app_root_container)
@@ -29,11 +28,6 @@ internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {
 
     override fun renderToolbarWithModel(model: UIModelToolbar) {
         binding.appRootToolbar.renderWithModel(model)
-    }
-
-    private fun setupToolbar() {
-        binding.appRootToolbar.isTitleCentered = true
-        binding.appRootToolbar.elevation = ResourceDimension.getDimensions().dimen1.toFloat()
     }
 
     private fun setupBinding() {
