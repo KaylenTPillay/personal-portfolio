@@ -13,6 +13,8 @@ import co.za.kaylentravispillay.personalportfolio.aboutme.viewmodel.ViewModelAbo
 import co.za.kaylentravispillay.personalportfolio.aboutme.viewmodel.factory.ViewModelFactoryAboutMe
 import co.za.kaylentravispillay.personalportfolio.approot.listener.OnAppRootToolbarListener
 import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeLayoutBinding
+import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
+import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
 
 class FragmentAboutMe : Fragment() {
 
@@ -50,6 +52,11 @@ class FragmentAboutMe : Fragment() {
         val context = context ?: return
         binding.aboutMeContainer.adapter = AdapterAboutMe()
         binding.aboutMeContainer.layoutManager = LinearLayoutManager(context)
+
+        if (binding.aboutMeContainer.itemDecorationCount == 0) {
+            binding.aboutMeContainer.addItemDecoration(ItemDecorationMaxWidth())
+            binding.aboutMeContainer.addItemDecoration(ItemDecorationSpaceAware())
+        }
     }
 
     private fun observeViewModel() {

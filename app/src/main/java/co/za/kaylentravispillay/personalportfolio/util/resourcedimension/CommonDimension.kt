@@ -12,11 +12,14 @@ class CommonDimension(context: Context) {
         private set
     var dimen16: Int = 0
         private set
+    var dimen640: Int = 0
+        private set
 
     init {
         dimen1 = context.resources.getDimensionPixelSize(R.dimen.dimen1)
         dimen2 = context.resources.getDimensionPixelSize(R.dimen.dimen2)
         dimen8 = context.resources.getDimensionPixelSize(R.dimen.dimen8)
         dimen16 = context.resources.getDimensionPixelSize(R.dimen.dimen16)
+        dimen640 = context.resources.getDimensionPixelSize(R.dimen.dimen640)
     }
 }
