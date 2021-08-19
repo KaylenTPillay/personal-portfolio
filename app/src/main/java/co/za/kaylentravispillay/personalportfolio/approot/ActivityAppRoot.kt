@@ -10,7 +10,6 @@ import co.za.kaylentravispillay.personalportfolio.databinding.AppRootLayoutBindi
 import co.za.kaylentravispillay.personalportfolio.util.extension.getNavigationController
 import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
 import co.za.kaylentravispillay.personalportfolio.util.extension.renderWithModel
-import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.ResourceDimension
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 internal class ActivityAppRoot : AppCompatActivity(), OnAppRootToolbarListener {

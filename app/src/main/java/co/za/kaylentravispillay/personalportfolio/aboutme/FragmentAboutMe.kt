@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import co.za.kaylentravispillay.personalportfolio.aboutme.container.adapter.AdapterAboutMe
 import co.za.kaylentravispillay.personalportfolio.aboutme.viewmodel.ViewModelAboutMe
 import co.za.kaylentravispillay.personalportfolio.aboutme.viewmodel.factory.ViewModelFactoryAboutMe
 import co.za.kaylentravispillay.personalportfolio.approot.listener.OnAppRootToolbarListener
@@ -39,13 +41,24 @@ class FragmentAboutMe : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initialiseContainer()
         observeViewModel()
         viewModel.init()
+    }
+
+    private fun initialiseContainer() {
+        val context = context ?: return
+        binding.aboutMeContainer.adapter = AdapterAboutMe()
+        binding.aboutMeContainer.layoutManager = LinearLayoutManager(context)
     }
 
     private fun observeViewModel() {
         viewModel.toolbarObservable.observe(viewLifecycleOwner) { model ->
             onAppRootToolbarListener?.renderToolbarWithModel(model)
+        }
+
+        viewModel.contentObservable.observe(viewLifecycleOwner) { content ->
+            (binding.aboutMeContainer.adapter as? AdapterAboutMe)?.submitList(content)
         }
     }
 }
