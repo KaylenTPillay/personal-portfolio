@@ -6,6 +6,7 @@ import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIMode
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.base.ViewHolderAboutMe
 import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeHeaderLayoutBinding
 import coil.load
+import coil.transform.CircleCropTransformation
 
 class ViewHolderAboutMeHeader(
     private val binding: AboutMeHeaderLayoutBinding
@@ -14,14 +15,21 @@ class ViewHolderAboutMeHeader(
     override fun onBindViewHolder(model: UIModelAboutMeItem) {
         if (model is UIModelAboutMeHeader) {
             bindHeaderBackground(model)
+            bindHeaderProfilePicture(model)
         }
     }
 
     private fun bindHeaderBackground(model: UIModelAboutMeHeader) {
         binding.aboutMeHeaderBackground.load(model.background) {
             crossfade(true)
-            placeholder(R.drawable.ic_material_placeholder)
             error(R.drawable.ic_material_placeholder)
+        }
+    }
+
+    private fun bindHeaderProfilePicture(model: UIModelAboutMeHeader) {
+        binding.aboutMeHeaderProfilePicture.load(model.profileThumbnail) {
+            crossfade(true)
+            transformations(CircleCropTransformation())
         }
     }
 }
