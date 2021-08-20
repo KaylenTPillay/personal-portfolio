@@ -3,6 +3,7 @@ package co.za.kaylentravispillay.personalportfolio.aboutme.viewmodel.impl
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeHeader
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeItem
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeParagraph
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeTitle
@@ -22,7 +23,9 @@ class ViewModelAboutMeImpl : ViewModelAboutMe, ViewModel() {
     override fun init() {
         mToolbarObservable.value = screenTitle
         mContentObservable.value = List(5) {
-            if (it % 2 == 0) {
+            if (it == 0) {
+                UIModelAboutMeHeader(id = it.toString(), background = "")
+            } else if (it % 2 == 0) {
                 UIModelAboutMeTitle(id = it.toString(), text = "Title $it")
             } else {
                 UIModelAboutMeParagraph(

@@ -1,16 +1,16 @@
 package co.za.kaylentravispillay.personalportfolio.aboutme.container.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.diff.AboutMeItemDiff
-import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeItem
-import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeItemType
-import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeParagraph
-import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeTitle
+import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.*
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.base.ViewHolderAboutMe
+import co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.header.ViewHolderAboutMeHeader
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.text.ViewHolderAboutMeText
+import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeHeaderLayoutBinding
 import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
 import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.model.UIModelSpaceAware
 
@@ -24,6 +24,7 @@ class AdapterAboutMe : ListAdapter<UIModelAboutMeItem, RecyclerView.ViewHolder>(
     ): RecyclerView.ViewHolder {
         return when (viewType) {
             UIModelAboutMeItemType.TEXT.ordinal -> createTextViewHolder(parent)
+            UIModelAboutMeItemType.HEADER.ordinal -> createHeaderViewHolder(parent)
             else -> createUnknownViewHolder(parent)
         }
     }
@@ -37,6 +38,7 @@ class AdapterAboutMe : ListAdapter<UIModelAboutMeItem, RecyclerView.ViewHolder>(
         val model = currentList[position]
         return when (model) {
             is UIModelAboutMeTitle, is UIModelAboutMeParagraph -> UIModelAboutMeItemType.TEXT
+            is UIModelAboutMeHeader -> UIModelAboutMeItemType.HEADER
             else -> UIModelAboutMeItemType.UNKNOWN
         }.ordinal
     }
@@ -54,6 +56,15 @@ class AdapterAboutMe : ListAdapter<UIModelAboutMeItem, RecyclerView.ViewHolder>(
 
     private fun createTextViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return ViewHolderAboutMeText(parent.context)
+    }
+
+    private fun createHeaderViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
+        val binding = AboutMeHeaderLayoutBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolderAboutMeHeader(binding)
     }
 
     private fun createUnknownViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {

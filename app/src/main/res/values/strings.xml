@@ -3,4 +3,6 @@
     <string name="app_root_bottom_navigation_about_me">About Me</string>
     <string name="app_root_bottom_navigation_project">Projects</string>
     <string name="app_root_bottom_navigation_document">Documents</string>
+
+    <string name="about_me_header_background_content_description">Header background</string>
 </resources>
