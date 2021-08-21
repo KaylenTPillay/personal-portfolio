@@ -1,8 +1,8 @@
-package co.za.kaylentravispillay.personalportfolio.util.extension
+package co.za.kaylentravispillay.personalportfolio.ui.util.extension
 
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
-import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
+import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
 import coil.annotation.ExperimentalCoilApi
 import coil.request.ImageRequest
 import coil.request.ImageResult

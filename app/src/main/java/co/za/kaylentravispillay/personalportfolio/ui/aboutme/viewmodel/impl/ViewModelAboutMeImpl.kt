@@ -9,7 +9,7 @@ import co.za.kaylentravispillay.personalportfolio.domain.usecase.UseCaseAboutMeG
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.UIModelAboutMeItem
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.mapping.mapToAboutMeItems
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.viewmodel.ViewModelAboutMe
-import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
+import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
 import kotlinx.coroutines.launch
 
 class ViewModelAboutMeImpl(

@@ -1,8 +1,8 @@
 package co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model
 
 import android.graphics.Rect
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.model.UIModelSpaceAware
-import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.ResourceDimension
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.model.UIModelSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.resourcedimension.ResourceDimension
 
 sealed interface UIModelAboutMeItem : UIModelSpaceAware {
     val id: String

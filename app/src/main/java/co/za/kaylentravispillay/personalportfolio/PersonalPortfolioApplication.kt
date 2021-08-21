@@ -1,7 +1,7 @@
 package co.za.kaylentravispillay.personalportfolio
 
 import android.app.Application
-import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.ResourceDimension
+import co.za.kaylentravispillay.personalportfolio.ui.util.resourcedimension.ResourceDimension
 
 @Suppress("unused")
 class PersonalPortfolioApplication : Application() {

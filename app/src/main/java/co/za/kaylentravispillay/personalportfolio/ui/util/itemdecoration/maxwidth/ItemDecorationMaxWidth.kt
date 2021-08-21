@@ -1,12 +1,12 @@
-package co.za.kaylentravispillay.personalportfolio.util.itemdecoration.maxwidth
+package co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.maxwidth
 
 import android.content.Context
 import android.graphics.Point
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import co.za.kaylentravispillay.personalportfolio.util.extension.getUsableDisplayDimensions
-import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.ResourceDimension
+import co.za.kaylentravispillay.personalportfolio.ui.util.extension.getUsableDisplayDimensions
+import co.za.kaylentravispillay.personalportfolio.ui.util.resourcedimension.ResourceDimension
 
 class ItemDecorationMaxWidth : RecyclerView.ItemDecoration() {
 

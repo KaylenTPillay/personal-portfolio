@@ -11,8 +11,8 @@ import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.viewholde
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.viewholder.header.ViewHolderAboutMeHeader
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.viewholder.text.ViewHolderAboutMeText
 import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeHeaderLayoutBinding
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.model.UIModelSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.model.UIModelSpaceAware
 
 class AdapterAboutMe : ListAdapter<UIModelAboutMeItem, RecyclerView.ViewHolder>(
     AboutMeItemDiff()

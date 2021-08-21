@@ -1,4 +1,4 @@
-package co.za.kaylentravispillay.personalportfolio.util.extension
+package co.za.kaylentravispillay.personalportfolio.ui.util.extension
 
 import android.content.Context
 import android.graphics.Point

@@ -1,9 +1,9 @@
-package co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware
+package co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
 
 class ItemDecorationSpaceAware : RecyclerView.ItemDecoration() {
 

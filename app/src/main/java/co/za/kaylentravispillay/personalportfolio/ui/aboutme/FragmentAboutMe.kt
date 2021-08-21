@@ -13,8 +13,8 @@ import co.za.kaylentravispillay.personalportfolio.ui.aboutme.viewmodel.ViewModel
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.viewmodel.factory.ViewModelFactoryAboutMe
 import co.za.kaylentravispillay.personalportfolio.ui.approot.listener.OnAppRootToolbarListener
 import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeLayoutBinding
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
-import co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
 
 class FragmentAboutMe : Fragment() {
 

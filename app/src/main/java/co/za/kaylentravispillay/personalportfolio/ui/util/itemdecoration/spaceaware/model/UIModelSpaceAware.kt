@@ -1,4 +1,4 @@
-package co.za.kaylentravispillay.personalportfolio.util.itemdecoration.spaceaware.model
+package co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.model
 
 import android.graphics.Rect
 

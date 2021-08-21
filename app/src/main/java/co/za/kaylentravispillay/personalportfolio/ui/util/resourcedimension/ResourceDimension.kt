@@ -1,4 +1,4 @@
-package co.za.kaylentravispillay.personalportfolio.util.resourcedimension
+package co.za.kaylentravispillay.personalportfolio.ui.util.resourcedimension
 
 import android.content.Context
 

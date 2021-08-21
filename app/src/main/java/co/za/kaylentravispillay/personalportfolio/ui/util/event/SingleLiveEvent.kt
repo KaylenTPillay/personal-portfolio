@@ -1,4 +1,4 @@
-package co.za.kaylentravispillay.personalportfolio.util.event
+package co.za.kaylentravispillay.personalportfolio.ui.util.event
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
