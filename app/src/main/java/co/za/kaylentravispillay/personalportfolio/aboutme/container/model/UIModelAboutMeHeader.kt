@@ -7,7 +7,8 @@ import co.za.kaylentravispillay.personalportfolio.util.resourcedimension.Resourc
 data class UIModelAboutMeHeader(
     override val id: String,
     val profileThumbnail: String,
-    val background: String
+    val profileName: String,
+    val profileProfessionalTitle: String
 ) : UIModelAboutMeItem, UIModelSpaceAware {
 
     override fun getSpaceAwareRect(

@@ -1,6 +1,5 @@
 package co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.header
 
-import co.za.kaylentravispillay.personalportfolio.R
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeHeader
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.model.UIModelAboutMeItem
 import co.za.kaylentravispillay.personalportfolio.aboutme.container.viewholder.base.ViewHolderAboutMe
@@ -14,15 +13,9 @@ class ViewHolderAboutMeHeader(
 
     override fun onBindViewHolder(model: UIModelAboutMeItem) {
         if (model is UIModelAboutMeHeader) {
-            bindHeaderBackground(model)
             bindHeaderProfilePicture(model)
-        }
-    }
-
-    private fun bindHeaderBackground(model: UIModelAboutMeHeader) {
-        binding.aboutMeHeaderBackground.load(model.background) {
-            crossfade(true)
-            error(R.drawable.ic_material_placeholder)
+            bindHeaderProfileTitle(model)
+            bindHeaderProfileSubtitle(model)
         }
     }
 
@@ -31,5 +24,13 @@ class ViewHolderAboutMeHeader(
             crossfade(true)
             transformations(CircleCropTransformation())
         }
+    }
+
+    private fun bindHeaderProfileTitle(model: UIModelAboutMeHeader) {
+        binding.aboutMeHeaderProfileTitle.text = model.profileName
+    }
+
+    private fun bindHeaderProfileSubtitle(model: UIModelAboutMeHeader) {
+        binding.aboutMeHeaderProfileSubtitle.text = model.profileProfessionalTitle
     }
 }

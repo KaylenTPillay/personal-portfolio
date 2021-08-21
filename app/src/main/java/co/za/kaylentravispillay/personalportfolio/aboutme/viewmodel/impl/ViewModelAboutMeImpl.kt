@@ -26,8 +26,9 @@ class ViewModelAboutMeImpl : ViewModelAboutMe, ViewModel() {
             if (it == 0) {
                 UIModelAboutMeHeader(
                     id = it.toString(),
-                    background = "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__480.jpg",
-                    profileThumbnail = "https://media-exp1.licdn.com/dms/image/C5603AQHAwsUCx_x6nQ/profile-displayphoto-shrink_200_200/0/1547707726993?e=1634169600&v=beta&t=XoYcm_yUgpOu14QyzWNUlmRP-YCIPcDdzKGxeqB9VnQ"
+                    profileThumbnail = "https://media-exp1.licdn.com/dms/image/C5603AQHAwsUCx_x6nQ/profile-displayphoto-shrink_200_200/0/1547707726993?e=1634169600&v=beta&t=XoYcm_yUgpOu14QyzWNUlmRP-YCIPcDdzKGxeqB9VnQ",
+                    profileName = "Kaylen Travis Pillay",
+                    profileProfessionalTitle = "Android Software Engineer"
                 )
             } else if (it % 2 == 0) {
                 UIModelAboutMeTitle(id = it.toString(), text = "Title $it")
