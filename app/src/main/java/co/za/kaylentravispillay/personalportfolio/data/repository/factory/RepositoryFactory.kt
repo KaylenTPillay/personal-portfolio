@@ -8,7 +8,8 @@ object RepositoryFactory {
 
     fun createAboutMe(): RepositoryAboutMe {
         return RepositoryAboutMeImpl(
-            sourceRetrofit = SourceFactory.createRetrofit()
+            sourceRetrofit = SourceFactory.createRetrofit(),
+            sourceBuildConfig = SourceFactory.createBuildConfig()
         )
     }
 }
