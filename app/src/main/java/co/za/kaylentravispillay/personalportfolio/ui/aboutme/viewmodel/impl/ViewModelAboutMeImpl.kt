@@ -3,15 +3,20 @@ package co.za.kaylentravispillay.personalportfolio.ui.aboutme.viewmodel.impl
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.UIModelAboutMeHeader
+import androidx.lifecycle.viewModelScope
+import co.za.kaylentravispillay.personalportfolio.domain.entity.EntityResult
+import co.za.kaylentravispillay.personalportfolio.domain.usecase.UseCaseAboutMeGet
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.UIModelAboutMeItem
-import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.UIModelAboutMeParagraph
-import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.UIModelAboutMeTitle
+import co.za.kaylentravispillay.personalportfolio.ui.aboutme.container.model.mapping.mapToAboutMeItems
 import co.za.kaylentravispillay.personalportfolio.ui.aboutme.viewmodel.ViewModelAboutMe
 import co.za.kaylentravispillay.personalportfolio.util.model.UIModelToolbar
+import kotlinx.coroutines.launch
 
-class ViewModelAboutMeImpl : ViewModelAboutMe, ViewModel() {
+class ViewModelAboutMeImpl(
+    private val useCaseAboutMeGet: UseCaseAboutMeGet
+) : ViewModelAboutMe, ViewModel() {
 
+    private var hasInitialised: Boolean = false
     private val screenTitle = UIModelToolbar(title = "About Me")
 
     private val mToolbarObservable: MutableLiveData<UIModelToolbar> = MutableLiveData()
@@ -22,23 +27,22 @@ class ViewModelAboutMeImpl : ViewModelAboutMe, ViewModel() {
 
     override fun init() {
         mToolbarObservable.value = screenTitle
-        mContentObservable.value = List(5) {
-            if (it == 0) {
-                UIModelAboutMeHeader(
-                    id = it.toString(),
-                    profileThumbnail = "https://media-exp1.licdn.com/dms/image/C5603AQHAwsUCx_x6nQ/profile-displayphoto-shrink_200_200/0/1547707726993?e=1634169600&v=beta&t=XoYcm_yUgpOu14QyzWNUlmRP-YCIPcDdzKGxeqB9VnQ",
-                    profileName = "Kaylen Travis Pillay",
-                    profileProfessionalTitle = "Android Software Engineer"
-                )
-            } else if (it % 2 == 0) {
-                UIModelAboutMeTitle(id = it.toString(), text = "Title $it")
-            } else {
-                UIModelAboutMeParagraph(
-                    id = it.toString(),
-                    text = """
-                        This is a much longer piece of text and is used for a paragraph. $it
-                    """.trimIndent()
-                )
+
+        if (!hasInitialised) {
+            getData()
+        }
+    }
+
+    private fun getData() {
+        viewModelScope.launch {
+            hasInitialised = when (val result = useCaseAboutMeGet.getAboutMeData()) {
+                is EntityResult.Success -> {
+                    mContentObservable.value = result.response.mapToAboutMeItems()
+                    true
+                }
+                is EntityResult.Error -> {
+                    true
+                }
             }
         }
     }
