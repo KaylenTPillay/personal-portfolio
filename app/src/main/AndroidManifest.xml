@@ -15,7 +15,7 @@
         android:theme="@style/Theme.PersonalPortfolio"
         tools:ignore="AllowBackup">
 
-        <activity android:name=".approot.ActivityAppRoot">
+        <activity android:name="co.za.kaylentravispillay.personalportfolio.ui.approot.ActivityAppRoot">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
