@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_width="match_parent"
+    tools:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/tap_to_retry_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/tap_to_retry_image_description"
+        android:src="@drawable/ic_material_sad"
+        app:layout_constraintBottom_toTopOf="@id/tap_to_retry_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tap_to_retry_message"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen8"
+        android:layout_marginEnd="@dimen/dimen16"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/tap_to_retry_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tap_to_retry_image"
+        tools:text="Unfortunately something has gone wrong." />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tap_to_retry_info"
+        style="@style/TextAppearance.MaterialComponents.Overline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginEnd="@dimen/dimen16"
+        android:gravity="center_vertical"
+        android:text="@string/tap_to_retry_info"
+        app:drawableStartCompat="@drawable/ic_material_tap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tap_to_retry_message" />
+
+</merge>
