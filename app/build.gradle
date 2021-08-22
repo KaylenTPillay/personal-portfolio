@@ -14,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "API_ID", "\"${project.userId}\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,11 +29,11 @@ android {
         viewBinding true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
@@ -53,6 +55,14 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "io.coil-kt:coil:1.3.2"
+    implementation "androidx.palette:palette-ktx:1.0.0"
+    implementation "com.google.code.gson:gson:2.8.8"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.github.KaylenTPillay:skelly:0.0.2-ALPHA"
+    implementation "com.facebook.shimmer:shimmer:0.5.0"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

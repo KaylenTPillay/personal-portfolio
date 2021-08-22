@@ -3,4 +3,10 @@
     <string name="app_root_bottom_navigation_about_me">About Me</string>
     <string name="app_root_bottom_navigation_project">Projects</string>
     <string name="app_root_bottom_navigation_document">Documents</string>
+
+    <string name="tap_to_retry_info">to retry</string>
+    <string name="tap_to_retry_image_description">Oh no :(</string>
+
+    <string name="about_me_header_background_content_description">Header background</string>
+    <string name="about_me_header_profile_content_description">Profile picture</string>
 </resources>
