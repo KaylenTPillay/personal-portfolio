@@ -16,6 +16,7 @@ import co.za.kaylentravispillay.personalportfolio.ui.approot.listener.OnAppRootT
 import co.za.kaylentravispillay.personalportfolio.databinding.AboutMeLayoutBinding
 import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
 import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
+import co.za.kaylentravispillay.personalportfolio.ui.util.resourcedimension.ResourceDimension
 
 class FragmentAboutMe : Fragment() {
 
@@ -46,6 +47,7 @@ class FragmentAboutMe : Fragment() {
 
         initialiseContainer()
         initialiseTapToRetry()
+        initialiseShelly()
         observeViewModel()
         viewModel.init()
     }
@@ -67,6 +69,30 @@ class FragmentAboutMe : Fragment() {
         }
     }
 
+    private fun initialiseShelly() {
+        binding.aboutMeSkelly.buildSkelly {
+            bone {
+                marginTop { ResourceDimension.getDimensions().dimen8 }
+                height { ResourceDimension.getDimensions().dimen150 }
+            }
+
+            repeat(3) {
+                bone {
+                    marginTop { ResourceDimension.getDimensions().dimen8 }
+                    height { ResourceDimension.getDimensions().dimen16 }
+                }
+                bone {
+                    marginTop { ResourceDimension.getDimensions().dimen8 }
+                    height { ResourceDimension.getDimensions().dimen16 * 2 }
+                }
+            }
+
+            bone {
+                marginTop { ResourceDimension.getDimensions().dimen8 }
+            }
+        }
+    }
+
     private fun observeViewModel() {
         viewModel.toolbarObservable.observe(viewLifecycleOwner) { model ->
             onAppRootToolbarListener?.renderToolbarWithModel(model)
@@ -80,6 +106,15 @@ class FragmentAboutMe : Fragment() {
         viewModel.tapToRetryObservable.observe(viewLifecycleOwner) { model ->
             setErrorVisibility(true)
             binding.aboutMeTapToRetry.renderWithModel(model)
+        }
+
+        viewModel.tapToRetryVisibleObservable.observe(viewLifecycleOwner) { isVisible ->
+            binding.aboutMeTapToRetry.isInvisible = !isVisible
+        }
+
+        viewModel.loadingObservable.observe(viewLifecycleOwner) { isLoading ->
+            binding.aboutMeSkelly.isInvisible = !isLoading
+            binding.aboutMeSkelly.enableShimmer(isLoading)
         }
     }
 

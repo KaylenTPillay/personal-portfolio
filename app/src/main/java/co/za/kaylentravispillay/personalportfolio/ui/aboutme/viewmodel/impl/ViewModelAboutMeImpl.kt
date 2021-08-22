@@ -34,6 +34,12 @@ class ViewModelAboutMeImpl(
     private val mTapToRetryObservable: SingleLiveEvent<UIModelTapToRetry> = SingleLiveEvent()
     override val tapToRetryObservable: LiveData<UIModelTapToRetry> = mTapToRetryObservable
 
+    private val mLoadingObservable: MutableLiveData<Boolean> = MutableLiveData()
+    override val loadingObservable: LiveData<Boolean> = mLoadingObservable
+
+    private val mTapToRetryVisibleObservable: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    override val tapToRetryVisibleObservable: LiveData<Boolean> = mTapToRetryVisibleObservable
+
     override fun init() {
         mToolbarObservable.value = screenTitle
 
@@ -47,11 +53,15 @@ class ViewModelAboutMeImpl(
         isInErrorState = false
         currentErrorMessage = String()
 
+        mTapToRetryVisibleObservable.value = false
+
         getData()
     }
 
     private fun getData() {
         viewModelScope.launch {
+            mLoadingObservable.value = true
+
             hasInitialised = when (val result = useCaseAboutMeGet.getAboutMeData()) {
                 is EntityResult.Success -> {
                     mContentObservable.value = result.response.mapToAboutMeItems()
@@ -62,6 +72,8 @@ class ViewModelAboutMeImpl(
                     true
                 }
             }
+
+            mLoadingObservable.value = false
         }
     }
 

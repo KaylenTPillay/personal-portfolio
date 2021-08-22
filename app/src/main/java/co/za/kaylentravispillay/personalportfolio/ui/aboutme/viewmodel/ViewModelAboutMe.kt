@@ -9,6 +9,8 @@ interface ViewModelAboutMe {
     val toolbarObservable: LiveData<UIModelToolbar>
     val contentObservable: LiveData<List<UIModelAboutMeItem>>
     val tapToRetryObservable: LiveData<UIModelTapToRetry>
+    val loadingObservable: LiveData<Boolean>
+    val tapToRetryVisibleObservable: LiveData<Boolean>
 
     fun init()
 
