@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class DTOAboutMeSection(
     @SerializedName(value = "id")
-    val id: String = String(),
+    val id: String? = null,
 
     @SerializedName(value = "type")
-    val type: String = String(),
+    val type: String? = null,
 
     @SerializedName(value = "value")
-    val value: Any = Any()
+    val value: Any? = null
 )

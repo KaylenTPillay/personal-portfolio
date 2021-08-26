@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:background="@color/project_item_background"
+    android:clickable="true"
+    android:focusable="true">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/project_item_title"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginEnd="@dimen/dimen16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Project Title" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/project_item_description"
+        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen8"
+        android:layout_marginEnd="@dimen/dimen16"
+        app:layout_constraintBottom_toTopOf="@id/project_item_info_barrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/project_item_title"
+        tools:text="This is a really long project title. This text describes the project that is hosted on Github" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/project_item_info_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="project_item_title, project_item_description" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/project_item_star"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginBottom="@dimen/dimen16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/project_item_info_barrier"
+        tools:text="Stars: 3" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/project_item_watcher"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen16"
+        android:layout_marginTop="@dimen/dimen16"
+        android:layout_marginBottom="@dimen/dimen16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/project_item_star"
+        app:layout_constraintTop_toBottomOf="@id/project_item_info_barrier"
+        tools:text="Watchers: 3" />
+
+    <co.za.kaylentravispillay.skelly.SkellyLayout
+        android:id="@+id/project_item_skelly"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen16"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

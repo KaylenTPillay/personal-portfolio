@@ -1,7 +1,8 @@
 package co.za.kaylentravispillay.personalportfolio.domain.entity.aboutme
 
 data class EntityAboutMeProfile(
-    val fullName: String,
-    val careerTitle: String,
-    val thumbnail: String
+    val fullName: String = String(),
+    val careerTitle: String = String(),
+    val thumbnail: String = String(),
+    val githubUsername: String = String()
 )

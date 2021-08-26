@@ -1,15 +1,36 @@
 package co.za.kaylentravispillay.personalportfolio.ui.project
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.za.kaylentravispillay.personalportfolio.databinding.ProjectLayoutBinding
+import co.za.kaylentravispillay.personalportfolio.ui.approot.listener.OnAppRootToolbarListener
+import co.za.kaylentravispillay.personalportfolio.ui.project.container.adapter.AdapterProject
+import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.ViewModelProject
+import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.factory.ViewModelFactoryProject
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
+import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
 
 class FragmentProject : Fragment() {
 
+    private var onAppRootToolbarListener: OnAppRootToolbarListener? = null
     private lateinit var binding: ProjectLayoutBinding
+
+    private val viewModel: ViewModelProject by viewModels {
+        ViewModelFactoryProject()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        onAppRootToolbarListener = context as? OnAppRootToolbarListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,5 +39,50 @@ class FragmentProject : Fragment() {
     ): View {
         binding = ProjectLayoutBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initialiseContainer()
+        initialiseTapToRetry()
+        observeViewModel()
+        viewModel.init()
+    }
+
+    private fun initialiseContainer() {
+        binding.projectContainer.adapter = AdapterProject { link ->
+            viewModel.onGithubLinkClick(binding.root.context, link)
+        }
+        binding.projectContainer.layoutManager = LinearLayoutManager(context)
+        if (binding.projectContainer.itemDecorationCount == 0) {
+            binding.projectContainer.addItemDecoration(ItemDecorationSpaceAware())
+            binding.projectContainer.addItemDecoration(ItemDecorationMaxWidth())
+        }
+    }
+
+    private fun initialiseTapToRetry() {
+        binding.projectTapToRetry.setOnTapToRetrySelected {
+            viewModel.onTapToRetryClick()
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.toolbarObservable.observe(viewLifecycleOwner) { model ->
+            onAppRootToolbarListener?.renderToolbarWithModel(model)
+        }
+
+        viewModel.projectItemObservable.observe(viewLifecycleOwner) { items ->
+            (binding.projectContainer.adapter as? AdapterProject)?.submitList(items)
+        }
+
+        viewModel.tapToRetryVisibleObservable.observe(viewLifecycleOwner) { show ->
+            binding.projectContainer.isInvisible = show
+            binding.projectTapToRetry.isInvisible = !show
+        }
+
+        viewModel.tapToRetryObservable.observe(viewLifecycleOwner) { model ->
+            binding.projectTapToRetry.renderWithModel(model)
+        }
     }
 }

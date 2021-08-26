@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/drawable/ic_material_eye.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/drawable/ic_material_sad.xml" value="0.11875" />
+        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/drawable/ic_material_star.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/drawable/ic_material_tap.xml" value="0.11875" />
-        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/layout/about_me_layout.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/layout/about_me_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/layout/project_item_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/layout/project_layout.xml" value="0.36594202898550726" />
         <entry key="..\:/Users/Kaylen Pillay/Documents/GitHub/personal-portfolio/app/src/main/res/layout/tap_to_retry_layout.xml" value="0.25" />
       </map>
     </option>
