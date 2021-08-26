@@ -19,6 +19,9 @@ class ViewModelProjectImpl(
     private var isInitialised: Boolean = false
 
     private val screenTitle = UIModelToolbar("Projects")
+    private val loadingProjectModels = List(10) {
+        UIModelProjectItem(id = it.toString(), isLoading = true)
+    }
 
     private val mToolbarObservable: MutableLiveData<UIModelToolbar> = MutableLiveData()
     override val toolbarObservable: LiveData<UIModelToolbar> = mToolbarObservable
@@ -39,6 +42,7 @@ class ViewModelProjectImpl(
     }
 
     private fun getProjects() {
+        mProjectItemObservable.value = loadingProjectModels
         viewModelScope.launch {
             isInitialised = when (val response = interactorUserProjectsGet.getUserProjects()) {
                 is EntityResult.Success -> {

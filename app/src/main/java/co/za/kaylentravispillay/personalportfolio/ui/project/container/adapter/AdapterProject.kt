@@ -34,6 +34,6 @@ class AdapterProject(
     }
 
     override fun getSpaceAwareItemModelForPosition(position: Int?): UIModelSpaceAware? {
-        return position?.let { modelPosition -> currentList[modelPosition] }
+        return position?.let { modelPosition -> currentList.getOrNull(modelPosition) }
     }
 }

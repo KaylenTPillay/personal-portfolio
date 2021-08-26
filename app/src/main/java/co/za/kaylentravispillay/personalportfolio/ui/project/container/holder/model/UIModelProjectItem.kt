@@ -9,11 +9,26 @@ data class UIModelProjectItem(
     val title: String,
     val description: String,
     val link: String,
+    val isLoading: Boolean,
     private val watchers: Int,
     private val stars: Int
 ) : UIModelSpaceAware {
+
     val watchersDisplayText = "Watchers: $watchers"
     val starsDisplayText = "Stars: $stars"
+
+    val isTitleActive: Boolean = title.isNotBlank()
+    val isDescriptionActive: Boolean = description.isNotBlank()
+
+    constructor(id: String, isLoading: Boolean): this(
+        id = id,
+        title = String(),
+        description = String(),
+        link = String(),
+        watchers = 0,
+        stars = 0,
+        isLoading = isLoading
+    )
 
     override fun getSpaceAwareRect(
         position: Int,

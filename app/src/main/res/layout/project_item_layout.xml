@@ -70,4 +70,15 @@
         app:layout_constraintTop_toBottomOf="@id/project_item_info_barrier"
         tools:text="Watchers: 3" />
 
+    <co.za.kaylentravispillay.skelly.SkellyLayout
+        android:id="@+id/project_item_skelly"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen16"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
