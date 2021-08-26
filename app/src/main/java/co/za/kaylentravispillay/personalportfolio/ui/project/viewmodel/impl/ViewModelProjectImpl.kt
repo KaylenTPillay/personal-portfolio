@@ -12,6 +12,7 @@ import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.mo
 import co.za.kaylentravispillay.personalportfolio.ui.project.router.RouterProject
 import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.ViewModelProject
 import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
+import co.za.kaylentravispillay.personalportfolio.ui.util.taptoretry.model.UIModelTapToRetry
 import kotlinx.coroutines.launch
 
 class ViewModelProjectImpl(
@@ -20,6 +21,9 @@ class ViewModelProjectImpl(
 ) : ViewModel(), ViewModelProject {
 
     private var isInitialised: Boolean = false
+    private var isInErrorState: Boolean = false
+
+    private var currentErrorMessage: String = String()
 
     private val screenTitle = UIModelToolbar("Projects")
     private val loadingProjectModels = List(10) {
@@ -32,16 +36,30 @@ class ViewModelProjectImpl(
     private val mProjectItemObservable: MutableLiveData<List<UIModelProjectItem>> = MutableLiveData()
     override val projectItemObservable: LiveData<List<UIModelProjectItem>> = mProjectItemObservable
 
+    private val mTapToRetryObservable: MutableLiveData<UIModelTapToRetry> = MutableLiveData()
+    override val tapToRetryObservable: LiveData<UIModelTapToRetry> = mTapToRetryObservable
+
+    private val mTapToRetryVisibilityObservable: MutableLiveData<Boolean> = MutableLiveData()
+    override val tapToRetryVisibleObservable: LiveData<Boolean> = mTapToRetryVisibilityObservable
+
     override fun init() {
         mToolbarObservable.value = screenTitle
 
         when {
             !isInitialised -> getProjects()
+            isInErrorState -> handleOnProjectError(currentErrorMessage)
         }
     }
 
     override fun onGithubLinkClick(context: Context, link: String) {
         router.routeToExternalLink(context, link)
+    }
+
+    override fun onTapToRetryClick() {
+        isInErrorState = false
+        mTapToRetryVisibilityObservable.value = false
+
+        getProjects()
     }
 
     private fun getProjects() {
@@ -53,10 +71,19 @@ class ViewModelProjectImpl(
                     true
                 }
                 is EntityResult.Error -> {
-                    mToolbarObservable.value = UIModelToolbar(response.status.toString())
+                    handleOnProjectError(response.message)
                     true
                 }
             }
         }
+    }
+
+    private fun handleOnProjectError(message: String) {
+        isInErrorState = true
+        currentErrorMessage = message
+
+        mProjectItemObservable.value = emptyList()
+        mTapToRetryVisibilityObservable.value = true
+        mTapToRetryObservable.value = UIModelTapToRetry(message)
     }
 }

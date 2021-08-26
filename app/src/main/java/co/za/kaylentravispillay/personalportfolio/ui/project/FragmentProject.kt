@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +45,7 @@ class FragmentProject : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initialiseContainer()
+        initialiseTapToRetry()
         observeViewModel()
         viewModel.init()
     }
@@ -59,6 +61,12 @@ class FragmentProject : Fragment() {
         }
     }
 
+    private fun initialiseTapToRetry() {
+        binding.projectTapToRetry.setOnTapToRetrySelected {
+            viewModel.onTapToRetryClick()
+        }
+    }
+
     private fun observeViewModel() {
         viewModel.toolbarObservable.observe(viewLifecycleOwner) { model ->
             onAppRootToolbarListener?.renderToolbarWithModel(model)
@@ -66,6 +74,15 @@ class FragmentProject : Fragment() {
 
         viewModel.projectItemObservable.observe(viewLifecycleOwner) { items ->
             (binding.projectContainer.adapter as? AdapterProject)?.submitList(items)
+        }
+
+        viewModel.tapToRetryVisibleObservable.observe(viewLifecycleOwner) { show ->
+            binding.projectContainer.isInvisible = show
+            binding.projectTapToRetry.isInvisible = !show
+        }
+
+        viewModel.tapToRetryObservable.observe(viewLifecycleOwner) { model ->
+            binding.projectTapToRetry.renderWithModel(model)
         }
     }
 }
