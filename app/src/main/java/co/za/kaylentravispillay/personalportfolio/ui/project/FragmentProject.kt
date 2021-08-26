@@ -15,7 +15,6 @@ import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.ViewModel
 import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.factory.ViewModelFactoryProject
 import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.maxwidth.ItemDecorationMaxWidth
 import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.ItemDecorationSpaceAware
-import co.za.kaylentravispillay.personalportfolio.ui.util.itemdecoration.spaceaware.adapter.AdapterSpaceAware
 
 class FragmentProject : Fragment() {
 
@@ -51,7 +50,7 @@ class FragmentProject : Fragment() {
 
     private fun initialiseContainer() {
         binding.projectContainer.adapter = AdapterProject { link ->
-            viewModel.onGithubLinkClick(link)
+            viewModel.onGithubLinkClick(binding.root.context, link)
         }
         binding.projectContainer.layoutManager = LinearLayoutManager(context)
         if (binding.projectContainer.itemDecorationCount == 0) {

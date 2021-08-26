@@ -11,4 +11,5 @@
     <string name="about_me_header_profile_content_description">Profile picture</string>
 
     <string name="project_item_github_action">View On Github</string>
+    <string name="project_github_chooser_title">View Github Project</string>
 </resources>

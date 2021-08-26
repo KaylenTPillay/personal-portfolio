@@ -12,8 +12,8 @@ data class DTOProject(
     @SerializedName(value = "description")
     val description: String? = null,
 
-    @SerializedName(value = "url")
-    val url: String? = null,
+    @SerializedName(value = "html_url")
+    val html_url: String? = null,
 
     @SerializedName(value = "stargazers_count")
     val stargazers_count: Int? = null,

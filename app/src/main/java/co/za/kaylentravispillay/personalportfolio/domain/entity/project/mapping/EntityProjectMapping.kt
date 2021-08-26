@@ -12,7 +12,7 @@ private fun DTOProject.mapToEntityProject(): EntityProject {
         id = this@mapToEntityProject.id ?: String(),
         name = this@mapToEntityProject.name ?: String(),
         description = this@mapToEntityProject.description ?: String(),
-        link = this@mapToEntityProject.url ?: String(),
+        link = this@mapToEntityProject.html_url ?: String(),
         starCount = this@mapToEntityProject.stargazers_count ?: 0,
         watcherCount = this@mapToEntityProject.watchers_count ?: 0
     )

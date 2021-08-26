@@ -1,5 +1,6 @@
 package co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.model.UIModelProjectItem
 import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
@@ -10,5 +11,5 @@ interface ViewModelProject {
 
     fun init()
 
-    fun onGithubLinkClick(link: String)
+    fun onGithubLinkClick(context: Context, link: String)
 }

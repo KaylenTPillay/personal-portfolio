@@ -1,5 +1,6 @@
 package co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.impl
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +9,13 @@ import co.za.kaylentravispillay.personalportfolio.domain.entity.EntityResult
 import co.za.kaylentravispillay.personalportfolio.domain.interactor.InteractorUserProjectsGet
 import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.model.UIModelProjectItem
 import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.model.mapping.mapToUIModels
+import co.za.kaylentravispillay.personalportfolio.ui.project.router.RouterProject
 import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.ViewModelProject
 import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
 import kotlinx.coroutines.launch
 
 class ViewModelProjectImpl(
+    private val router: RouterProject,
     private val interactorUserProjectsGet: InteractorUserProjectsGet
 ) : ViewModel(), ViewModelProject {
 
@@ -37,8 +40,8 @@ class ViewModelProjectImpl(
         }
     }
 
-    override fun onGithubLinkClick(link: String) {
-
+    override fun onGithubLinkClick(context: Context, link: String) {
+        router.routeToExternalLink(context, link)
     }
 
     private fun getProjects() {
