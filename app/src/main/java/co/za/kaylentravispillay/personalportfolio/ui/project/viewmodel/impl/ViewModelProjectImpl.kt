@@ -3,11 +3,20 @@ package co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.impl
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import co.za.kaylentravispillay.personalportfolio.domain.entity.EntityResult
+import co.za.kaylentravispillay.personalportfolio.domain.interactor.InteractorUserProjectsGet
 import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.model.UIModelProjectItem
+import co.za.kaylentravispillay.personalportfolio.ui.project.container.holder.model.mapping.mapToUIModels
 import co.za.kaylentravispillay.personalportfolio.ui.project.viewmodel.ViewModelProject
 import co.za.kaylentravispillay.personalportfolio.ui.util.model.UIModelToolbar
+import kotlinx.coroutines.launch
 
-class ViewModelProjectImpl : ViewModel(), ViewModelProject {
+class ViewModelProjectImpl(
+    private val interactorUserProjectsGet: InteractorUserProjectsGet
+) : ViewModel(), ViewModelProject {
+
+    private var isInitialised: Boolean = false
 
     private val screenTitle = UIModelToolbar("Projects")
 
@@ -19,19 +28,28 @@ class ViewModelProjectImpl : ViewModel(), ViewModelProject {
 
     override fun init() {
         mToolbarObservable.value = screenTitle
-        mProjectItemObservable.value = List(15) {
-            UIModelProjectItem(
-                id = it.toString(),
-                title = "Project Title $it",
-                description = "Description $it",
-                link = "Link $it",
-                watchers = 3 * it,
-                stars = 10 * it
-            )
+
+        when {
+            !isInitialised -> getProjects()
         }
     }
 
     override fun onGithubLinkClick(link: String) {
 
+    }
+
+    private fun getProjects() {
+        viewModelScope.launch {
+            isInitialised = when (val response = interactorUserProjectsGet.getUserProjects()) {
+                is EntityResult.Success -> {
+                    mProjectItemObservable.value = response.response.mapToUIModels()
+                    true
+                }
+                is EntityResult.Error -> {
+                    mToolbarObservable.value = UIModelToolbar(response.status.toString())
+                    true
+                }
+            }
+        }
     }
 }

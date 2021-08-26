@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class DTOAboutMe(
     @SerializedName(value = "profile")
-    val profile: DTOAboutMeProfile = DTOAboutMeProfile(),
+    val profile: DTOAboutMeProfile? = null,
 
     @SerializedName(value = "sections")
-    val sections: List<DTOAboutMeSection> = emptyList()
+    val sections: List<DTOAboutMeSection>? = null
 )

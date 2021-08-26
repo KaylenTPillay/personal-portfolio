@@ -1,7 +1,9 @@
 package co.za.kaylentravispillay.personalportfolio.data.repository.factory
 
 import co.za.kaylentravispillay.personalportfolio.data.repository.RepositoryAboutMe
+import co.za.kaylentravispillay.personalportfolio.data.repository.RepositoryProjects
 import co.za.kaylentravispillay.personalportfolio.data.repository.impl.RepositoryAboutMeImpl
+import co.za.kaylentravispillay.personalportfolio.data.repository.impl.RepositoryProjectsImpl
 import co.za.kaylentravispillay.personalportfolio.source.factory.SourceFactory
 
 object RepositoryFactory {
@@ -10,6 +12,12 @@ object RepositoryFactory {
         return RepositoryAboutMeImpl(
             sourceRetrofit = SourceFactory.createRetrofit(),
             sourceBuildConfig = SourceFactory.createBuildConfig()
+        )
+    }
+
+    fun createProjects(): RepositoryProjects {
+        return RepositoryProjectsImpl(
+            sourceRetrofit = SourceFactory.createRetrofit()
         )
     }
 }

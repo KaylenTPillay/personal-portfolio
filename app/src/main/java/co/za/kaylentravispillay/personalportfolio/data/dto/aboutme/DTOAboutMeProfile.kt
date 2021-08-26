@@ -4,11 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class DTOAboutMeProfile(
     @SerializedName(value = "name")
-    val name: String = String(),
+    val name: String? = null,
 
     @SerializedName("title")
-    val title: String = String(),
+    val title: String? = null,
 
     @SerializedName("image")
-    val image: String = String()
+    val image: String? = null,
+
+    @SerializedName("github_username")
+    val github_username: String? = null
 )
